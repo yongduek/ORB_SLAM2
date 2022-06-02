@@ -1,5 +1,7 @@
 echo "Configuring and building Thirdparty/DBoW2 ..."
 
+rm -rf build Thirdparty/DBoW2/build/ Thirdparty/g2o/build/
+
 cd Thirdparty/DBoW2
 mkdir build
 cd build
