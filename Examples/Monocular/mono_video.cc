@@ -30,6 +30,7 @@
 
 #define _WEBCAM_BUILD_
 
+const int VideoId = 0;
 
 using namespace std;
 
@@ -42,14 +43,20 @@ int main(int argc, char **argv)
     if(argc != 3)
     {
         cerr << endl << "argc:" << argc << "!= 3"<< endl;
+        cerr << argv[0] << "VocabFile YAML" << endl;
+        exit(0);
     }
 
-    cv::VideoCapture cap(0);
+    cv::VideoCapture cap(VideoId);
 
     if (!cap.isOpened()) {
         cerr << endl << "Could not open camera feed." << endl;
         return -1;
     }
+    cap.set(cv::CAP_PROP_FRAME_WIDTH, 640);
+
+    
+
     ORB_SLAM2::System SLAM(argv[1], argv[2], ORB_SLAM2::System::MONOCULAR, true);
     cout << endl << "-------" << endl;
     cout << "Start processing sequence ..." << endl;
